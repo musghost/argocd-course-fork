@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: great-service-deployment
+  labels:
+    app: great-service
+spec:
+  selector:
+    matchLabels:
+      app: great-service
+  template:
+    metadata:
+      labels:
+        app: great-service
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}
+        volumeMounts:
+        - mountPath: /usr/share/nginx/html/
+          name: html
+      volumes:
+      - name: html
+        configMap:
+          name: html
+          items:
+            - key: index.html
+              path: index.html
