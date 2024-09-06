@@ -1,0 +1,6 @@
+wp:
+  replicas: 1
+  resources:
+    limits:
+      cpu: 250m
+      memory: 200M

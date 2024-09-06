@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nodeapp
+  name: nodeapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodeapp
+  template:
+    metadata:
+      labels:
+        app: nodeapp
+    spec:
+      containers:
+      - image: node:12
+        name: node-server
+        workingDir: /app/
+        ports:
+        - containerPort: 3000
+        resources: {}
+        volumeMounts:
+        - mountPath: /app/
+          name: source
+        command:
+        - node
+        - server.js
+      volumes:
+      - name: source
+        configMap:
+          name: code-nodejs
+          items:
+            - key: server.js
+              path: server.js

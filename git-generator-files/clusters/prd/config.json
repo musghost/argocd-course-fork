@@ -1,0 +1,7 @@
+{
+  "cluster": {
+    "name": "prd-cluster",
+    "address": "https://192.168.64.2:65005"    
+  },
+  "revision": "HEAD"
+}

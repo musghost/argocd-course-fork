@@ -1,0 +1,7 @@
+{
+  "cluster": {
+    "name": "dev-cluster",
+    "address": "https://192.168.64.1:65004"
+  },
+  "revision": "HEAD"
+}
