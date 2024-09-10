@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: custom-server-deployment
+  labels:
+    app: custom-server
+spec:
+  selector:
+    matchLabels:
+      app: custom-server
+  template:
+    metadata:
+      labels:
+        app: custom-server
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}
+        volumeMounts:
+        - name: html-volume
+          mountPath: /usr/share/nginx/html/
+        - name: nginx-config-volume
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
+      volumes:
+      - name: html-volume
+        configMap:
+          name: html-cm
+          items:
+            - key: index.html
+              path: index.html
+            - key: custom_404.html
+              path: custom_404.html
+      - name: nginx-config-volume
+        configMap:
+          name: nginx-config-cm
+
