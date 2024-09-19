@@ -13,5 +13,5 @@ patches:
     name: nodeapp
   patch: |-
     - op: replace
-    path: /spec/template/spec/containers/0/resources
-    value: {"limits": {"cpu": "500m", "memory": "200Mi"}}
+      path: /spec/template/spec/containers/0/resources
+      value: {"limits": {"cpu": "500m", "memory": "200Mi"}}
