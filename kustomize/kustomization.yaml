@@ -6,3 +6,12 @@ configMapGenerator:
 - name: code-nodejs
   files:
   - server.js
+
+patches:
+- target:
+    kind: Deployment
+    name: nodeapp
+  patch: |-
+    - op: replace
+    path: /spec/template/spec/containers/0/resources
+    value: {"limits": {"cpu": "500m", "memory": "200Mi"}}
