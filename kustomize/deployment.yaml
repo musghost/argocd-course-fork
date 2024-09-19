@@ -22,7 +22,8 @@ spec:
         - containerPort: 3000
         resources:
           limits:
-            cpu: 100m
+            cpu: 500m
+            memory: 200Mi
         volumeMounts:
         - mountPath: /app/
           name: source
